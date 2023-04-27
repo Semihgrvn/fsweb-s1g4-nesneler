@@ -15,10 +15,15 @@ const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı
 */
 
 
-function MenuElemaniOlustur(/*Kodlar buraya*/){
-	/*Kodlar buraya*/
+function MenuElemaniOlustur(a,b,c){
+	const eleman = {
+		isim: a,
+		fiyat: b,
+		kategori: c,
+		}
+	return eleman
 }
-
+//console.log(MenuElemaniOlustur('Cheeseburger', 8, 'Burgerler'))
 
 
 /*  Görev 1b (otomatik test yok): 
@@ -31,6 +36,10 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
 */
 
+
+//console.log(MenuElemaniOlustur('Simit',5, 'Fırın'))
+//console.log(MenuElemaniOlustur('Çay', 2, 'İçecek'))
+//console.log(MenuElemaniOlustur('Kola', 7, 'Soğuk İçecek'))
 
 
 /* Görev 2: 
@@ -50,9 +59,17 @@ const burger = {
 	isim: "Burger", 
 	fiyat: 18, 
 	kategori: "Öğle Yemeği", 
-
+	indirim: function(status){
+		if (status== "öğretmen" || status=="öğrenci"){
+			return this.fiyat*0.75
+		
+		}else if (status== "diğer") {
+			return this.fiyat*0.9
+		}
+	}
 }
 
+console.log(burger.indirim("diğer"))
 
 
 ///////////////Değerlendirmeler (MVP)///////////////////
@@ -64,7 +81,7 @@ const degerlendirmeler = [
     {isim: "Pınar", puan: 3, geribildirim: "atıştırmalıklar harika ve gün içinde çalışmak için güzel bir cafe alanı."},
     {isim: "Ahmet", puan: 2, geribildirim: "Bu mekan beni fazla etkilemedi. Menüde özel bir şey yok ve çok pahalı. Atmosferi de ben beğenmedim ama başkaları beğenebilir." },
     {isim: "Latife", puan: 4, geribildirim: "Kesinlikle karaoke Cumalarını seviyorum! Yemek ve içki çeşitleri iyi."},
-    {isim: "Reyna", puan: 3.5, geribildirim: ""},
+    {isim: "Reyna", puan: 3.5, geribildirim: " bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"},
 ]
 
 /*  Görev 3 (ototest yok):  
@@ -72,7 +89,7 @@ const degerlendirmeler = [
 	1. Sadece Ahmet'in geribildirimini konsolda görüntüleyin - fonksiyona gerek yok
 */
 
-
+console.log (degerlendirmeler[5].geribildirim)
 
 /*  Görev 4 (ototest yok):  
 	Reyna'nın geribildirimi girilmemiş! Aşağıdakileri uygulayın: (fonksiyona gerek yok) 
@@ -80,6 +97,7 @@ const degerlendirmeler = [
 	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
 */
 
+degerlendirmeler[7].geribildirim= "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
 
 
 /*  Görev 5: 
@@ -94,11 +112,16 @@ const degerlendirmeler = [
 */
 
 
-function DegerledirmeEkle(/*Kodlar buraya */){
-	/*Kodlar buraya */
-	
+function DegerledirmeEkle(dizi,isim,puan,geribildirim){
+	const yenidegerlendirme = {
+		isim : isim,
+		puan : puan,
+		geribildirim : geribildirim
+	}
+	dizi.push(yenidegerlendirme);
+	return dizi
 }
-
+//console.log(DegerledirmeEkle(degerlendirmeler,'Hurşut', 2, 'Boktan yemekler!'))
 
 
 /*  Görev 6: 
@@ -112,8 +135,12 @@ function DegerledirmeEkle(/*Kodlar buraya */){
 */
 
 
-function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
+function AnahtardanDegerlendirmeAl(dizi,diziAnahtari) {
+	const a= dizi[diziAnahtari].isim ;
+	const b= dizi[diziAnahtari].puan ;
+	const c= dizi[diziAnahtari].geribildirim;
+
+	return a+ " isimli kişi " + b + " puan verdi ve şunları yazdı: " +c
 
 }
 
@@ -132,10 +159,14 @@ function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
 */
 
 
-function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
-} 
+function SonDegerlendirmeyiAl(dizi) {
+	const a= dizi[dizi.length-1].isim ;
+	const b= dizi[dizi.length-1].puan ;
+	const c= dizi[dizi.length-1].geribildirim ;
 
+	return a+ " isimli kişi " + b + " puan verdi ve şunları yazdı: " +c 
+} 
+//console.log(SonDegerlendirmeyiAl(degerlendirmeler))
 
 
 /////////////// BONUS  GÖRVLER////////////////////
